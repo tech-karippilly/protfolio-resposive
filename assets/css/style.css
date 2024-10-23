@@ -637,6 +637,49 @@ transform: translateY(-.25rem);
 }
 
 /* For medium devices */
+@media screen and (max-width :576px) {
+  .home__container,
+  .about__container,
+  .skills_contianer,
+  .services__container,
+  .projects__container,
+  .contact__container{
+    grid-template-columns: 360px;
+    justify-content: center;
+  }
+}
 
+@media screen and (max-width :768px) {
+  .nav__menu{
+    width: 55%;
+  }
+  .home__container,
+  .about__container,
+  .skills_contianer{
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+  }
+  .home__data,
+  .about_data,
+  .skill__data,
+  :is(.about_data, .skill__data,):is(.section__subtitle, .section__title)
+  {
+    text-align:initial;
+  }
+  .home__social{
+    justify-content: initial;
+  }
+  .home__blob,
+  .about__blob{
+    width: 400px;
+  }
+  .about_data{
+    order: 1;
+  }
 
+  .services__container,
+  .projects__container{
+    grid-template-columns: repeat(2,325px);
+  }
+}
 /* For large devices */
