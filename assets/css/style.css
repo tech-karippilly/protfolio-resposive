@@ -19,10 +19,11 @@
       -> Copy the color mode (HSL)
   */
 
-  --hue: 14;
-  --first-color: hsl(var(--hue), 100%, 65%);
+  --hue: 53.9;
+  --first-color: hsl(var(--hue), 100%, 78.8%);
   --first-color-alt: hsl(var(--hue), 56%, 35%);
   --title-color: hsl(228, 8%, 95%);
+  --button-colo:black;
   --text-color: hsl(228, 8%, 65%);
   --body-color: hsl(228, 15%, 20%);
   --container-color: hsl(228, 15%, 15%);
@@ -324,7 +325,7 @@ color: var(--first-color);
   background-color: var(--first-color);
   padding: 1rem 1.75rem;
   border-radius: 0.5rem;
-  color: var(--title-color);
+  color: var(--button-colo);
   font-weight: var(--font-medium);
   transition: box-shadow .4s;
 
