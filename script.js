@@ -91,3 +91,20 @@ const scrollActive =()=>{
     })
 }
 window.addEventListener('scroll',scrollActive)
+
+
+const sr = ScrollReveal({
+    origin:'top',
+    distance:'60px',
+    duration:2500,
+    delay:400,
+})
+
+sr.reveal(`.home__data,.home__social,.contact__container`)
+sr.reveal(`.home__image,.footer__container`,{origin:'bottom'})
+
+
+sr.reveal(`.about_data,.skill__data`,{origin:'left'})
+sr.reveal(`.about_image,.skills_content`,{origin:'right'})
+
+sr.reveal(`.services__card,.projects__card`,{interval:100})
