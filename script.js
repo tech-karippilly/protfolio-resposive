@@ -34,3 +34,30 @@ const blurHeader = ()=>{
 }
 
 window.addEventListener('scroll',blurHeader)
+
+
+const contactForm = document.getElementById('contact-form'),
+      contactMessage =document.getElementById('contact-message');
+
+const sendEmail  =(e) =>{
+    e.preventDefault()
+
+    emailjs.sendForm('service_f22cq74','template_1tom8fc','#contact-form','3atsjQueLM6XuZ4hZ').then(()=>{
+        contactMessage.textContent="Message send Successfully !!";
+
+        setTimeout(()=>{
+            contactMessage.textContent =''
+        },5000)
+
+        contactForm.reset();
+    },()=>{
+        contactMessage.textContent="Message not send (service error) !!";
+
+        setTimeout(()=>{
+            contactMessage.textContent =''
+        },5000)
+        contactForm.reset();
+    })
+}
+
+contactForm.addEventListener('submit',sendEmail);
