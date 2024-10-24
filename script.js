@@ -42,25 +42,46 @@ const contactForm = document.getElementById('contact-form'),
 const sendEmail  =(e) =>{
     e.preventDefault()
 
-    emailjs.sendForm('service_f22cq74','template_1tom8fc','#contact-form','3atsjQueLM6XuZ4hZ').then(()=>{
-        contactMessage.textContent="Message send Successfully !!";
+    const userName = document.getElementById('user_name').value.trim();
+    const userEmail =document.getElementById('user_email').value;
 
-        setTimeout(()=>{
-            contactMessage.textContent =''
-        },5000)
+    const usernamePattern = /[^a-zA-Z]/; 
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+    if (usernamePattern.test(userName)){
+        displayMessage("Username should only contain letters")
+        return ;
+    }
+    
+    if (!emailPattern.test(userEmail)){
+        displayMessage('Valid email is required');
+        return;
+    }
+
+
+    emailjs.sendForm('service_f22cq74','template_1tom8fc','#contact-form','3atsjQueLM6XuZ4hZ').then(()=>{
+
+        displayMessage('Message send Successfully !!',false);
 
         contactForm.reset();
     },()=>{
-        contactMessage.textContent="Message not send (service error) !!";
+        displayMessage('Message not send (service error) !!',true);
 
-        setTimeout(()=>{
-            contactMessage.textContent =''
-        },5000)
         contactForm.reset();
     })
+
+
 }
 
 contactForm.addEventListener('submit',sendEmail);
+
+const displayMessage = (message, isError = true) => {
+    contactMessage.textContent = message;
+    contactMessage.style.color = isError ? 'red' : 'green'; 
+    setTimeout(() => {
+        contactMessage.textContent = '';
+    }, 5000);
+}
 
 
 const scrollUp = () =>{
@@ -77,7 +98,6 @@ const sections =document.querySelectorAll('section[id]')
 const scrollActive =()=>{
     const scrollY =window.pageYOffset
 
-    console.log("scrollY",scrollY)
     sections.forEach(current=>{
         const sectionHeight = current.offsetHeight,
         sectionTop =current.offsetTop -58,
